@@ -82,6 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS.txt CHANGES.txt COPYING.txt README.txt
+%dir %{_libdir}/ocaml/odn
 %{_libdir}/ocaml/odn/odn.cma
 %{_libdir}/ocaml/odn/pa_noodn.cma
 %{_libdir}/ocaml/odn/pa_odn.cma
