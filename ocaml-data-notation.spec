@@ -10,7 +10,7 @@ Summary:	OCaml module to store data using OCaml notation
 Summary(pl.UTF-8):	Moduł OCamla do przechowywania danych w notacji OCamla
 Name:		ocaml-data-notation
 Version:	0.0.11
-Release:	2
+Release:	3
 License:	LGPL v2.1+ with OCaml static compilation exception
 Group:		Libraries
 Source0:	https://forge.ocamlcore.org/frs/download.php/1310/%{name}-%{version}.tar.gz
