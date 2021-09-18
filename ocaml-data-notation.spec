@@ -71,13 +71,6 @@ install -d $RPM_BUILD_ROOT%{_libdir}/ocaml
 export OCAMLFIND_DESTDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml
 ocaml setup.ml -install
 
-# move to dir pld ocamlfind looks
-install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/odn
-mv $RPM_BUILD_ROOT%{_libdir}/ocaml/odn/META $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/odn
-cat <<EOF >> $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/odn/META
-directory="+odn"
-EOF
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -85,13 +78,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS.txt CHANGES.txt COPYING.txt README.txt
 %dir %{_libdir}/ocaml/odn
+%{_libdir}/ocaml/odn/META
 %{_libdir}/ocaml/odn/odn.cma
 %{_libdir}/ocaml/odn/pa_noodn.cma
 %{_libdir}/ocaml/odn/pa_odn.cma
 %if %{with ocaml_opt}
 %attr(755,root,root) %{_libdir}/ocaml/odn/odn.cmxs
 %endif
-%{_libdir}/ocaml/site-lib/odn
 
 %files devel
 %defattr(644,root,root,755)
