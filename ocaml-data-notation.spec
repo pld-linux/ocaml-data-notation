@@ -1,8 +1,8 @@
 #
 # Conditional build:
-%bcond_without	ocaml_opt	# skip building native optimized binaries (bytecode is always built)
+%bcond_without	ocaml_opt	# native optimized binaries (bytecode is always built)
 
-%ifnarch %{ix86} %{x8664} arm aarch64 ppc sparc sparcv9
+%ifnarch %{ix86} %{x8664} %{arm} aarch64 ppc sparc sparcv9
 %undefine	with_ocaml_opt
 %endif
 
@@ -10,13 +10,14 @@ Summary:	OCaml module to store data using OCaml notation
 Summary(pl.UTF-8):	Moduł OCamla do przechowywania danych w notacji OCamla
 Name:		ocaml-data-notation
 Version:	0.0.11
-Release:	3
+Release:	4
 License:	LGPL v2.1+ with OCaml static compilation exception
 Group:		Libraries
 Source0:	https://forge.ocamlcore.org/frs/download.php/1310/%{name}-%{version}.tar.gz
 # Source0-md5:	0ab9cd196b4a7f22a037ab96a477896f
+Patch0:		%{name}-string.patch
 URL:		https://forge.ocamlcore.org/projects/odn/
-BuildRequires:	ocaml >= 3.10.2
+BuildRequires:	ocaml >= 1:3.10.2
 BuildRequires:	ocaml-camlp4
 BuildRequires:	ocaml-type_conv-devel >= 108.07.01
 %requires_eq	ocaml-runtime
@@ -53,6 +54,7 @@ biblioteki odn.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 ocaml setup.ml -configure \
